@@ -60,6 +60,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("userName",returnAb.getLoginUserName());
 
 			session = request.getSession(false);
+			
 			if (session == null) {
 				System.out.println("セッションなし");
 				request.getRequestDispatcher("/login.html").forward(request, response);

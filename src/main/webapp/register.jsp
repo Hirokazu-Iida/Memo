@@ -38,6 +38,8 @@
 		value="register"
 	>ログイン</button>
 	</form>
+	
+	<p><a href="login.html">ログインページ</a></p>
 
 </body>
 </html>
