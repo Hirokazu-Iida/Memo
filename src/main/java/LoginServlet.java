@@ -54,7 +54,6 @@ public class LoginServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		
-		
 		if(returnAb!=null) {
 			
 			session = request.getSession(true);
