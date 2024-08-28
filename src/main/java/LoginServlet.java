@@ -8,6 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.LoginDAO;
 
 /**
@@ -51,13 +52,13 @@ public class LoginServlet extends HttpServlet {
 		LoginDAO ld =new LoginDAO();
 		AccountBean returnAb = ld.findAccount(ab);
 		
-//		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession(false);
 		
 		if(returnAb!=null) {
 			
-//			session = request.getSession(true);
-//			String sun = request.getParameter("userName");
-//			session.setAttribute("userName",sun);
+			session = request.getSession(true);
+			String sun = request.getParameter("userName");
+			session.setAttribute("userName",sun);
 			
 			// HOME servlet　を作る？
 //			if (session == null) {
