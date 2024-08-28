@@ -57,17 +57,19 @@ public class LoginServlet extends HttpServlet {
 		if(returnAb!=null) {
 			
 			session = request.getSession(true);
-			String sun = request.getParameter("userName");
-			session.setAttribute("userName",sun);
+			session.setAttribute("userName",returnAb.getLoginUserName());
+
+			session = request.getSession(false);
+			if (session == null) {
+				System.out.println("セッションなし");
+				request.getRequestDispatcher("/login.html").forward(request, response);
+				return;
+			}else {
+				String un = (String) session.getAttribute("userName");
+				System.out.println("セッションあり " + un);
+			}
 			
-			// HOME servlet　を作る？
-//			if (session == null) {
-//			      request.getRequestDispatcher("Login").forward(request, response);
-//			      return;
-//			 }
-            
 			request.setAttribute("userName", returnAb.getLoginUserName());
-			
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 			rd.forward(request, response);
