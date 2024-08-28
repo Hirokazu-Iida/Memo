@@ -8,6 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.LoginDAO;
 
 /**
@@ -51,23 +52,24 @@ public class LoginServlet extends HttpServlet {
 		LoginDAO ld =new LoginDAO();
 		AccountBean returnAb = ld.findAccount(ab);
 		
-//		HttpSession session = request.getSession(false);
-		
+		HttpSession session = request.getSession(false);
 		
 		if(returnAb!=null) {
 			
-//			session = request.getSession(true);
-//			String sun = request.getParameter("userName");
-//			session.setAttribute("userName",sun);
+			session = request.getSession(true);
+			session.setAttribute("userName",returnAb.getLoginUserName());
 			
-			// HOME servlet　を作る？
-//			if (session == null) {
-//			      request.getRequestDispatcher("Login").forward(request, response);
-//			      return;
-//			 }
-            
+			session = request.getSession(false);
+			if (session == null) {
+				System.out.println("セッションなし");
+				request.getRequestDispatcher("/login.html").forward(request, response);
+				return;
+			}else {
+				String un = (String) session.getAttribute("userName");
+				System.out.println("セッションあり " + un);
+			}
+			
 			request.setAttribute("userName", returnAb.getLoginUserName());
-			
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 			rd.forward(request, response);
