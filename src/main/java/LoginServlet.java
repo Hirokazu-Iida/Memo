@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 			
 			session = request.getSession(true);
 			session.setAttribute("userName",returnAb.getLoginUserName());
-			
+
 			session = request.getSession(false);
 			if (session == null) {
 				System.out.println("セッションなし");
