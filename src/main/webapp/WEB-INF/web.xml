@@ -59,4 +59,24 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/LogoutServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InsertMemo</display-name>
+    <servlet-name>InsertMemo</servlet-name>
+    <servlet-class>InsertMemo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertMemo</servlet-name>
+    <url-pattern>/InsertMemo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InsertMemoServlet</display-name>
+    <servlet-name>InsertMemoServlet</servlet-name>
+    <servlet-class>InsertMemoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertMemoServlet</servlet-name>
+    <url-pattern>/InsertMemoServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
