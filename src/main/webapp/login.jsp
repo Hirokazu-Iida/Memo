@@ -22,6 +22,15 @@
 			<td><%=mb.getMemoUserId()%></td>
 			<td><%=mb.getMemoTitle()%></td>
 			<td><%=mb.getMemoContent()%></td>
+			<td>
+				<form action="/Memo/DeleteMemoServlet" method="post">
+					<input type="hidden" value="<%=mb.getMemoTitle()%>" name="deleteId">
+					<button class=""
+				        type="submit" 
+				        value="削除する"
+				    >削除する</button>
+				</form>
+			</td>
 		</tr>
 	<% } %>
 	</table>
