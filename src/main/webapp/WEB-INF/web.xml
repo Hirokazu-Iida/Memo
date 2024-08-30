@@ -79,4 +79,14 @@
     <servlet-name>InsertMemoServlet</servlet-name>
     <url-pattern>/InsertMemoServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteMemoServlet</display-name>
+    <servlet-name>DeleteMemoServlet</servlet-name>
+    <servlet-class>DeleteMemoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteMemoServlet</servlet-name>
+    <url-pattern>/DeleteMemoServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

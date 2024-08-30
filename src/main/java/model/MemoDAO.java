@@ -98,6 +98,32 @@ public class MemoDAO {
 	}
 	
 	
-	
+	public void deleteMemo(String deleteId) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql = null;
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection(URL, USER, PASS);
+			System.out.println("memo 接続OK");
+			sql="delete from memos where title =?";
+			
+			ps = con.prepareStatement(sql);
+			ps.setString(1,deleteId);
+			ps.executeUpdate();
+			System.out.println(deleteId + " delete ok!");
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+	    	try{
+    		if(ps != null) ps.close();
+    		if(con != null) con.close();
+    		} catch(Exception e){
+    		e.printStackTrace();
+    		}
+		}
+	}
 
 }

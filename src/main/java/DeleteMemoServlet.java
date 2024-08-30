@@ -13,15 +13,15 @@ import jakarta.servlet.http.HttpSession;
 import model.MemoDAO;
 
 /**
- * Servlet implementation class InsertMemoServlet
+ * Servlet implementation class DeleteMemoServlet
  */
-public class InsertMemoServlet extends HttpServlet {
+public class DeleteMemoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertMemoServlet() {
+    public DeleteMemoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,34 +41,23 @@ public class InsertMemoServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
+		String deleteId = request.getParameter("deleteId");
 		HttpSession session = request.getSession(false);
-		
-		String memoTitle = request.getParameter("memoTitle");
-		String memoContent = request.getParameter("memoContent");
-		String memoUserId = (String) session.getAttribute("loginId");
-		
-		System.out.println("insertMemo セッションあり " + memoUserId + memoTitle + memoContent);
+		String loginId = (String) session.getAttribute("loginId");
 		
 		MemoBean mb = new MemoBean();
-		mb.setMemoTitle(memoTitle);
-		mb.setMemoContent(memoContent);
-		mb.setMemoUserId(memoUserId);
+		mb.setMemoUserId(deleteId);
 		
-		System.out.println("mb 通過 ok!");
-		
-		MemoDAO md = new MemoDAO();
-		md.insertMemo(mb);
+		MemoDAO md =new MemoDAO();
+		md.deleteMemo(deleteId);
 		
 		// 一覧再取得
-		List<MemoBean> returnLmb = md.showList(memoUserId);
+		List<MemoBean> returnLmb = md.showList(loginId);
 		System.out.println("showListメソッド通過");
 		session.setAttribute("returnLmb", returnLmb);
 		
-		System.out.println("insert ok!");
-		
 		RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 		rd.forward(request, response);
-		
 	}
 
 }
