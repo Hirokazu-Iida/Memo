@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>    
+<%@ page import="bean.MemoBean" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List"%>
+<% List<MemoBean> Lmb = (List<MemoBean>)session.getAttribute("returnLmb");%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +14,17 @@
 <body>
 
 	<h2> ようこそ <%= session.getAttribute("userName") %> さん。 </h2>
+	
+ 	<table>
+	<%for(int i = 0; i < Lmb.size(); i++){%>
+		<%MemoBean mb = (MemoBean)Lmb.get(i);%>
+	 		<tr>
+			<td><%=mb.getMemoUserId()%></td>
+			<td><%=mb.getMemoTitle()%></td>
+			<td><%=mb.getMemoContent()%></td>
+		</tr>
+	<% } %>
+	</table>
 	
 	<form action="/Memo/InsertMemoServlet" method="post">
 		<input class=""
