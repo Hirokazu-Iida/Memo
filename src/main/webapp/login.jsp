@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<h2> ようこそ <%= request.getAttribute("userName") %> さん。 </h2>
+	<h2> ようこそ <%= session.getAttribute("userName") %> さん。 </h2>
 	
 	<form action="/Memo/InsertMemoServlet" method="post">
 		<input class=""

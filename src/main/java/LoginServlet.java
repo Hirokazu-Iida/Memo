@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 			
 			session = request.getSession(true);
 			session.setAttribute("loginId",returnAb.getLoginId());
-
+			session.setAttribute("userName", returnAb.getLoginUserName());
 			session = request.getSession(false);
 			
 			if (session == null) {
@@ -70,7 +70,7 @@ public class LoginServlet extends HttpServlet {
 				System.out.println("セッションあり " + Li);
 			}
 			
-			request.setAttribute("userName", returnAb.getLoginUserName());
+//			request.setAttribute("userName", returnAb.getLoginUserName());
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 			rd.forward(request, response);
