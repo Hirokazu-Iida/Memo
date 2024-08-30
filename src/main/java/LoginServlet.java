@@ -1,8 +1,10 @@
 
 
 import java.io.IOException;
+import java.util.List;
 
 import bean.AccountBean;
+import bean.MemoBean;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -10,6 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.LoginDAO;
+import model.MemoDAO;
 
 /**
  * Servlet implementation class LoginServlet
@@ -59,7 +62,13 @@ public class LoginServlet extends HttpServlet {
 			session = request.getSession(true);
 			session.setAttribute("loginId",returnAb.getLoginId());
 			session.setAttribute("userName", returnAb.getLoginUserName());
-			session = request.getSession(false);
+			
+			MemoDAO md = new MemoDAO();
+			List<MemoBean> returnLmb = md.showList(loginId);
+			System.out.println("showListメソッド通過");
+			
+			session.setAttribute("returnLmb", returnLmb);
+			session = request.getSession(false);		
 			
 			if (session == null) {
 				System.out.println("セッションなし");
