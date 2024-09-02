@@ -35,6 +35,7 @@
 	<% } %>
 	</table>
 	
+	<!-- 
 	<form action="/Memo/InsertMemoServlet" method="post">
 		<input class=""
 			type="text"
@@ -55,8 +56,14 @@
 		        value="insert"
 		>登録</button>
 	</form>
+	 -->
 	
 	<!-- <p><a href="/Memo/LogoutServlet">ログアウト</a></p> -->
+	
+	<form action="<%= request.getContextPath() %>/insert.jsp" method="post">
+		<input type="submit" value="新規メモ登録">
+	</form>
+	
 	<form action="<%= request.getContextPath() %>/LogoutServlet" method="post">
 		<input type="submit" value="ログアウト">
 	</form>
