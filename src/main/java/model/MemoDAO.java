@@ -68,7 +68,7 @@ public class MemoDAO {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(URL, USER, PASS);
 			System.out.println("memo 接続OK");
-			sql="select * from memos where user_id =?";
+			sql="select * from memos where user_id =? ORDER BY memo_id DESC";
 			
 			ps = con.prepareStatement(sql);
 			ps.setString(1,loginId);
