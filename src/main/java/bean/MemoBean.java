@@ -4,6 +4,7 @@ public class MemoBean {
 	private String memoTitle;
 	private String memoContent;
 	private String memoUserId;
+	private String memoId;
 	
 	public void setMemoTitle(String memoTitle) {
 		this.memoTitle = memoTitle;
@@ -24,6 +25,13 @@ public class MemoBean {
 	}
 	public String getMemoUserId() {
 		return memoUserId;
+	}
+	
+	public void setMemoId(String memoId) {
+		this.memoId = memoId;
+	}
+	public String getMemoId() {
+		return memoId;
 	}
 
 }
