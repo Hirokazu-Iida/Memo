@@ -24,7 +24,7 @@
 			<td><%=mb.getMemoContent()%></td>
 			<td>
 				<form action="/Memo/DeleteMemoServlet" method="post">
-					<input type="hidden" value="<%=mb.getMemoTitle()%>" name="deleteId">
+					<input type="hidden" value="<%=mb.getMemoId()%>" name="deleteId">
 					<button class=""
 				        type="submit" 
 				        value="削除する"

@@ -79,6 +79,7 @@ public class MemoDAO {
 				mb.setMemoUserId(rs.getString("user_id"));
 				mb.setMemoTitle(rs.getString("title"));;
 				mb.setMemoContent(rs.getString("content"));
+				mb.setMemoId(rs.getString("memo_id"));
 				
 				memoList.add(mb);
 			}
@@ -107,7 +108,7 @@ public class MemoDAO {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(URL, USER, PASS);
 			System.out.println("memo 接続OK");
-			sql="delete from memos where title =?";
+			sql="delete from memos where memo_id =?";
 			
 			ps = con.prepareStatement(sql);
 			ps.setString(1,deleteId);
