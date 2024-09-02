@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h2><%= session.getAttribute("userName") %> : 新規メモ登録ページ</h2>
+	<h1><%= session.getAttribute("userName") %> : 新規メモ登録ページ</h1>
 
 	<form action="/Memo/InsertMemoServlet" method="post">
 		<input class=""

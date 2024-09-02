@@ -13,7 +13,7 @@
 </head>
 <body>
 
-	<h2> ようこそ <%= session.getAttribute("userName") %> さん。 </h2>
+	<h1> <%= session.getAttribute("userName") %> さんのページです。 </h1>
 	
  	<table>
 	<%for(int i = 0; i < Lmb.size(); i++){%>
